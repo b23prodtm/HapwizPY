@@ -120,9 +120,9 @@ if [ "${RETURN}" = 0 ]; then
   slogger -st netplan "add wifi network class /etc/netplan/$clientyaml"
   # shellcheck disable=SC2154
   [ -z "$CLIENT" ] && sed -i.old "/password:/a\\
-    addresses: [${PRIV_NETWORK}.1/${PRIV_NETWORK_MASKb}, '${PRIV_NETWORK_IPV6}1/${PRIV_NETWORK_MASKb6}']\\n\
-    nameservers:\\n\
-      addresses: [${nameservers},${nameservers6}]" "/etc/netplan/$clientyaml"
+      addresses: [${PRIV_NETWORK}.1/${PRIV_NETWORK_MASKb}, '${PRIV_NETWORK_IPV6}1/${PRIV_NETWORK_MASKb6}']\\n\
+      nameservers:\\n\
+        addresses: [${nameservers},${nameservers6}]" "/etc/netplan/$clientyaml"
   # shellcheck disable=SC2154
   [ -z "$CLIENT" ] && sed -i.old "/${PRIV_INT}:/,/${MARKER_END}/s/yes/no/g" "/etc/netplan/$clientyaml"
   grep -A8 "${PRIV_INT}" < "/etc/netplan/$clientyaml"
